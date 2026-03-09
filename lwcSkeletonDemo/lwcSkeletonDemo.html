@@ -1,0 +1,888 @@
+<template>
+    <div class="demo-container">
+        <lightning-card title="LWC Skeleton Component Demo" icon-name="custom:custom19">
+            <div class="slds-p-around_medium">
+                
+                <!-- INTRODUCTION -->
+                <div class="slds-section slds-is-open">
+                    <h3 class="slds-section__title slds-theme_shade">
+                        <span class="slds-truncate slds-p-horizontal_small" title="Introduction">Introduction</span>
+                    </h3>
+                    <div class="slds-section__content">
+                        <p>This demo showcases all possible combinations of the LWC Skeleton component. Use the tabs below to explore different variants and configurations.</p>
+                        
+                        <!-- GLOBAL CONTROLS -->
+                        <div class="slds-grid slds-wrap slds-gutters_small">
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                                <lightning-input
+                                    type="toggle"
+                                    label="Show Skeleton"
+                                    checked={showSkeleton}
+                                    onchange={handleShowSkeletonChange}>
+                                </lightning-input>
+                            </div>
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                                <lightning-combobox
+                                    name="animation"
+                                    label="Animation Type"
+                                    value={animationType}
+                                    options={animationOptions}
+                                    onchange={handleAnimationChange}>
+                                </lightning-combobox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TABS FOR DIFFERENT CATEGORIES -->
+                <lightning-tabset variant="scoped">
+                    
+                    <!-- BASIC VARIANTS TAB -->
+                    <lightning-tab label="Basic Variants" onactive={handleTabActive}>
+                        <div class="slds-p-around_medium">
+                            <h3 class="slds-text-heading_small slds-m-bottom_small">Basic Skeleton Variants</h3>
+                            
+                            <!-- TEXT SKELETON -->
+                            <div class="demo-section">
+                                <h4 class="slds-text-heading_medium">Text Skeleton</h4>
+                                <div class="slds-box slds-m-bottom_medium">
+                                    <c-lwc-skeleton 
+                                        type="text" 
+                                        lines={textCount}
+                                        animation={animationType}
+                                        isloading={showSkeleton}>
+                                        <template if:false={showSkeleton}>
+                                            <p>This is the actual text content that appears when loading is complete.</p>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                            <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                            <p>Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                                        </template>
+                                    </c-lwc-skeleton>
+                                </div>
+                                <div class="code-example">
+                                    <lightning-button 
+                                        label="View Code" 
+                                        variant="base"
+                                        onclick={showTextCode}>
+                                    </lightning-button>
+                                    <template if:true={showTextCodeBlock}>
+                                        <pre class="code-block">{textCodeExample}</pre>
+                                    </template>
+                                </div>
+                                <div class="controls">
+                                    <lightning-input 
+                                        type="number" 
+                                        label="Line Count" 
+                                        value={textCount}
+                                        onchange={handleTextCountChange}>
+                                    </lightning-input>
+                                </div>
+                            </div>
+
+                            <!-- AVATAR SKELETON -->
+                            <div class="demo-section">
+                                <h4 class="slds-text-heading_medium">Avatar Skeleton</h4>
+                                <div class="slds-box slds-m-bottom_medium">
+                                    <c-lwc-skeleton 
+                                        type="avatar" 
+                                        animation={animationType}
+                                        isloading={showSkeleton}>
+                                        <template if:false={showSkeleton}>
+                                            <img src="https://via.placeholder.com/40" alt="User Avatar" class="avatar-image" />
+                                        </template>
+                                    </c-lwc-skeleton>
+                                </div>
+                                <div class="code-example">
+                                    <lightning-button 
+                                        label="View Code" 
+                                        variant="base"
+                                        onclick={showAvatarCode}>
+                                    </lightning-button>
+                                    <template if:true={showAvatarCodeBlock}>
+                                        <pre class="code-block">{avatarCodeExample}</pre>
+                                    </template>
+                                </div>
+                            </div>
+
+                            <!-- BUTTON SKELETON -->
+                            <div class="demo-section">
+                                <h4 class="slds-text-heading_medium">Button Skeleton</h4>
+                                <div class="slds-box slds-m-bottom_medium">
+                                    <c-lwc-skeleton 
+                                        type="button" 
+                                        animation={animationType}
+                                        isloading={showSkeleton}>
+                                        <template if:false={showSkeleton}>
+                                            <lightning-button label="Save" variant="brand"></lightning-button>
+                                        </template>
+                                    </c-lwc-skeleton>
+                                </div>
+                                <div class="code-example">
+                                    <lightning-button 
+                                        label="View Code" 
+                                        variant="base"
+                                        onclick={showButtonCode}>
+                                    </lightning-button>
+                                    <template if:true={showButtonCodeBlock}>
+                                        <pre class="code-block">{buttonCodeExample}</pre>
+                                    </template>
+                                </div>
+                            </div>
+
+                            <!-- INPUT SKELETON -->
+                            <div class="demo-section">
+                                <h4 class="slds-text-heading_medium">Input Skeleton</h4>
+                                <div class="slds-box slds-m-bottom_medium">
+                                    <c-lwc-skeleton 
+                                        type="input" 
+                                        animation={animationType}
+                                        isloading={showSkeleton}>
+                                        <template if:false={showSkeleton}>
+                                            <lightning-input label="User Name" value="John Doe"></lightning-input>
+                                        </template>
+                                    </c-lwc-skeleton>
+                                </div>
+                                <div class="code-example">
+                                    <lightning-button 
+                                        label="View Code" 
+                                        variant="base"
+                                        onclick={showInputCode}>
+                                    </lightning-button>
+                                    <template if:true={showInputCodeBlock}>
+                                        <pre class="code-block">{inputCodeExample}</pre>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </lightning-tab>
+
+                    <!-- COMPLEX VARIANTS TAB -->
+                    <lightning-tab label="Complex Variants" onactive={handleTabActive}>
+                        <div class="slds-p-around_medium">
+                            <h3 class="slds-text-heading_small slds-m-bottom_small">Complex Skeleton Variants</h3>
+                            
+                            <!-- CARD SKELETON -->
+                            <div class="demo-section">
+                                <h4 class="slds-text-heading_medium">Card Skeleton</h4>
+                                <div class="slds-box slds-m-bottom_medium">
+                                    <c-lwc-skeleton 
+                                        type="card" 
+                                        animation={animationType}
+                                        isloading={showSkeleton}>
+                                        <template if:false={showSkeleton}>
+                                            <div class="slds-media">
+                                                <div class="slds-media__figure">
+                                                    <img src="https://via.placeholder.com/40" alt="User Avatar" class="avatar-image" />
+                                                </div>
+                                                <div class="slds-media__body">
+                                                    <p class="slds-text-heading_small slds-m-bottom_xx-small">John Doe</p>
+                                                    <p class="slds-text-body_small">Software Developer</p>
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </c-lwc-skeleton>
+                                </div>
+                                <div class="code-example">
+                                    <lightning-button 
+                                        label="View Code" 
+                                        variant="base"
+                                        onclick={showCardCode}>
+                                    </lightning-button>
+                                    <template if:true={showCardCodeBlock}>
+                                        <pre class="code-block">{cardCodeExample}</pre>
+                                    </template>
+                                </div>
+                            </div>
+
+                            <!-- TABLE SKELETON -->
+                            <div class="demo-section">
+                                <h4 class="slds-text-heading_medium">Table Skeleton</h4>
+                                <div class="slds-box slds-m-bottom_medium">
+                                    <c-lwc-skeleton 
+                                        type="table" 
+                                        rows={tableRows}
+                                        columns={tableColumns}
+                                        animation={animationType}
+                                        isloading={showSkeleton}>
+                                        <template if:false={showSkeleton}>
+                                            <table class="slds-table slds-table_cell-buffer slds-no-row-hover">
+                                                <thead>
+                                                    <tr class="slds-line-height_reset">
+                                                        <th scope="col">
+                                                            <div class="slds-truncate" title="Name">Name</div>
+                                                        </th>
+                                                        <th scope="col">
+                                                            <div class="slds-truncate" title="Company">Company</div>
+                                                        </th>
+                                                        <th scope="col">
+                                                            <div class="slds-truncate" title="Title">Title</div>
+                                                        </th>
+                                                        <th scope="col">
+                                                            <div class="slds-truncate" title="Email">Email</div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="slds-hint-parent">
+                                                        <th scope="row">
+                                                            <div class="slds-truncate" title="Amy Jones">Amy Jones</div>
+                                                        </th>
+                                                        <td>
+                                                            <div class="slds-truncate" title="Company One">Company One</div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="slds-truncate" title="Sales Director">Sales Director</div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="slds-truncate" title="amy@example.com">amy@example.com</div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="slds-hint-parent">
+                                                        <th scope="row">
+                                                            <div class="slds-truncate" title="Bob Smith">Bob Smith</div>
+                                                        </th>
+                                                        <td>
+                                                            <div class="slds-truncate" title="Company Two">Company Two</div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="slds-truncate" title="Developer">Developer</div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="slds-truncate" title="bob@example.com">bob@example.com</div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </template>
+                                    </c-lwc-skeleton>
+                                </div>
+                                <div class="code-example">
+                                    <lightning-button 
+                                        label="View Code" 
+                                        variant="base"
+                                        onclick={showTableCode}>
+                                    </lightning-button>
+                                    <template if:true={showTableCodeBlock}>
+                                        <pre class="code-block">{tableCodeExample}</pre>
+                                    </template>
+                                </div>
+                                <div class="controls">
+                                    <lightning-input 
+                                        type="number" 
+                                        label="Rows" 
+                                        value={tableRows}
+                                        onchange={handleTableRowsChange}>
+                                    </lightning-input>
+                                    <lightning-input 
+                                        type="number" 
+                                        label="Columns" 
+                                        value={tableColumns}
+                                        onchange={handleTableColumnsChange}>
+                                    </lightning-input>
+                                </div>
+                            </div>
+
+                            <!-- RECTANGLE SKELETON -->
+                            <div class="demo-section">
+                                <h4 class="slds-text-heading_medium">Rectangle Skeleton</h4>
+                                <div class="slds-box slds-m-bottom_medium">
+                                    <c-lwc-skeleton 
+                                        type="rectangle" 
+                                        width={rectWidth}
+                                        height={rectHeight}
+                                        radius={rectRadius}
+                                        animation={animationType}
+                                        isloading={showSkeleton}>
+                                        <template if:false={showSkeleton}>
+                                            <div class="slds-media">
+                                                <div class="slds-media__figure">
+                                                    <img src="https://via.placeholder.com/100x100" alt="Product Image" />
+                                                </div>
+                                                <div class="slds-media__body">
+                                                    <h3 class="slds-text-heading_medium slds-m-bottom_small">Product Name</h3>
+                                                    <p>This is a product description that appears when the content is loaded.</p>
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </c-lwc-skeleton>
+                                </div>
+                                <div class="code-example">
+                                    <lightning-button 
+                                        label="View Code" 
+                                        variant="base"
+                                        onclick={showRectangleCode}>
+                                    </lightning-button>
+                                    <template if:true={showRectangleCodeBlock}>
+                                        <pre class="code-block">{rectangleCodeExample}</pre>
+                                    </template>
+                                </div>
+                                <div class="controls">
+                                    <lightning-input 
+                                        type="text" 
+                                        label="Width" 
+                                        value={rectWidth}
+                                        onchange={handleRectWidthChange}>
+                                    </lightning-input>
+                                    <lightning-input 
+                                        type="text" 
+                                        label="Height" 
+                                        value={rectHeight}
+                                        onchange={handleRectHeightChange}>
+                                    </lightning-input>
+                                    <lightning-input 
+                                        type="text" 
+                                        label="Border Radius" 
+                                        value={rectRadius}
+                                        onchange={handleRectRadiusChange}>
+                                    </lightning-input>
+                                </div>
+                            </div>
+                        </div>
+                    </lightning-tab>
+
+                    <!-- REAL-WORLD EXAMPLES TAB -->
+                    <lightning-tab label="Real-World Examples" onactive={handleTabActive}>
+                        <div class="slds-p-around_medium">
+                            <h3 class="slds-text-heading_small slds-m-bottom_small">Real-World Usage Examples</h3>
+                            
+                            <!-- USER PROFILE EXAMPLE -->
+                            <div class="demo-section">
+                                <h4 class="slds-text-heading_medium">User Profile</h4>
+                                <div class="slds-box slds-m-bottom_medium">
+                                    <lightning-card title="User Profile" icon-name="standard:user">
+                                        <div class="slds-p-around_medium">
+                                            <div class="slds-grid slds-wrap slds-gutters">
+                                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4">
+                                                    <c-lwc-skeleton 
+                                                        type="avatar" 
+                                                        animation={animationType}
+                                                        isloading={showSkeleton}>
+                                                        <template if:false={showSkeleton}>
+                                                            <img src="https://via.placeholder.com/80" alt="User Avatar" class="avatar-image-large" />
+                                                        </template>
+                                                    </c-lwc-skeleton>
+                                                </div>
+                                                <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-4">
+                                                    <c-lwc-skeleton 
+                                                        type="text" 
+                                                        lines="3"
+                                                        animation={animationType}
+                                                        isloading={showSkeleton}>
+                                                        <template if:false={showSkeleton}>
+                                                            <h3 class="slds-text-heading_large">John Doe</h3>
+                                                            <p class="slds-text-body_small">Software Developer</p>
+                                                            <p>john.doe@example.com</p>
+                                                        </template>
+                                                    </c-lwc-skeleton>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </lightning-card>
+                                </div>
+                                <div class="code-example">
+                                    <lightning-button 
+                                        label="View Code" 
+                                        variant="base"
+                                        onclick={showProfileCode}>
+                                    </lightning-button>
+                                    <template if:true={showProfileCodeBlock}>
+                                        <pre class="code-block">{profileCodeExample}</pre>
+                                    </template>
+                                </div>
+                            </div>
+
+                            <!-- DASHBOARD EXAMPLE -->
+                            <div class="demo-section">
+                                <h4 class="slds-text-heading_medium">Dashboard</h4>
+                                <div class="slds-box slds-m-bottom_medium">
+                                    <div class="slds-grid slds-wrap slds-gutters">
+                                        <!-- Metric Cards -->
+                                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3">
+                                            <lightning-card title="Total Sales" icon-name="standard:account">
+                                                <div class="slds-p-around_medium">
+                                                    <c-lwc-skeleton 
+                                                        type="text" 
+                                                        lines="2"
+                                                        animation={animationType}
+                                                        isloading={showSkeleton}>
+                                                        <template if:false={showSkeleton}>
+                                                            <p class="slds-text-heading_large">$125,430</p>
+                                                            <p class="slds-text-body_small">+12% from last month</p>
+                                                        </template>
+                                                    </c-lwc-skeleton>
+                                                </div>
+                                            </lightning-card>
+                                        </div>
+                                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3">
+                                            <lightning-card title="New Customers" icon-name="standard:contact">
+                                                <div class="slds-p-around_medium">
+                                                    <c-lwc-skeleton 
+                                                        type="text" 
+                                                        lines="2"
+                                                        animation={animationType}
+                                                        isloading={showSkeleton}>
+                                                        <template if:false={showSkeleton}>
+                                                            <p class="slds-text-heading_large">42</p>
+                                                            <p class="slds-text-body_small">+8% from last month</p>
+                                                        </template>
+                                                    </c-lwc-skeleton>
+                                                </div>
+                                            </lightning-card>
+                                        </div>
+                                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3">
+                                            <lightning-card title="Conversion Rate" icon-name="standard:lead">
+                                                <div class="slds-p-around_medium">
+                                                    <c-lwc-skeleton 
+                                                        type="text" 
+                                                        lines="2"
+                                                        animation={animationType}
+                                                        isloading={showSkeleton}>
+                                                        <template if:false={showSkeleton}>
+                                                            <p class="slds-text-heading_large">24.8%</p>
+                                                            <p class="slds-text-body_small">+3.2% from last month</p>
+                                                        </template>
+                                                    </c-lwc-skeleton>
+                                                </div>
+                                            </lightning-card>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Chart Area -->
+                                    <div class="slds-m-top_medium">
+                                        <lightning-card title="Sales Trend" icon-name="standard:chart">
+                                            <div class="slds-p-around_medium">
+                                                <c-lwc-skeleton 
+                                                    type="rectangle" 
+                                                    width="100%"
+                                                    height="200px"
+                                                    animation={animationType}
+                                                    isloading={showSkeleton}>
+                                                    <template if:false={showSkeleton}>
+                                                        <img src="https://via.placeholder.com/600x200" alt="Sales Chart" />
+                                                    </template>
+                                                </c-lwc-skeleton>
+                                            </div>
+                                        </lightning-card>
+                                    </div>
+                                </div>
+                                <div class="code-example">
+                                    <lightning-button 
+                                        label="View Code" 
+                                        variant="base"
+                                        onclick={showDashboardCode}>
+                                    </lightning-button>
+                                    <template if:true={showDashboardCodeBlock}>
+                                        <pre class="code-block">{dashboardCodeExample}</pre>
+                                    </template>
+                                </div>
+                            </div>
+
+                            <!-- LIST VIEW EXAMPLE -->
+                            <div class="demo-section">
+                                <h4 class="slds-text-heading_medium">List View</h4>
+                                <div class="slds-box slds-m-bottom_medium">
+                                    <lightning-card title="Recent Opportunities" icon-name="standard:opportunity">
+                                        <div class="slds-p-around_medium">
+                                            <template for:each={listItems} for:item="item">
+                                                <div key={item.id} class="slds-p-vertical_small">
+                                                    <c-lwc-skeleton 
+                                                        type="card" 
+                                                        animation={animationType}
+                                                        isloading={showSkeleton}>
+                                                        <template if:false={showSkeleton}>
+                                                            <div class="slds-media">
+                                                                <div class="slds-media__figure">
+                                                                    <lightning-icon icon-name="standard:opportunity" size="small"></lightning-icon>
+                                                                </div>
+                                                                <div class="slds-media__body">
+                                                                    <p class="slds-text-heading_small slds-m-bottom_xx-small">{item.name}</p>
+                                                                    <p class="slds-text-body_small">{item.company}</p>
+                                                                </div>
+                                                                <div class="slds-media__figure slds-media__figure_reverse">
+                                                                    <p class="slds-text-heading_small">{item.amount}</p>
+                                                                </div>
+                                                            </div>
+                                                        </template>
+                                                    </c-lwc-skeleton>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </lightning-card>
+                                </div>
+                            </div>
+                            <div class="code-example">
+                                <lightning-button 
+                                    label="View Code" 
+                                    variant="base"
+                                    onclick={showListCode}>
+                                </lightning-button>
+                                <template if:true={showListCodeBlock}>
+                                    <pre class="code-block">{listCodeExample}</pre>
+                                </template>
+                            </div>
+                        </div>
+                    </lightning-tab>
+
+                    <!-- BACKWARD COMPATIBILITY TAB -->
+                    <lightning-tab label="Backward Compatibility" onactive={handleTabActive}>
+                        <div class="slds-p-around_medium">
+                            <h3 class="slds-text-heading_small slds-m-bottom_small">Backward Compatibility Examples</h3>
+                            <p class="slds-m-bottom_medium">The skeleton component supports backward compatibility with newer API names.</p>
+                            
+                            <!-- VARIANT ATTRIBUTE EXAMPLE -->
+                            <div class="demo-section">
+                                <h4 class="slds-text-heading_medium">Using 'variant' instead of 'type'</h4>
+                                <div class="slds-box slds-m-bottom_medium">
+                                    <c-lwc-skeleton 
+                                        variant="text" 
+                                        lines="3"
+                                        animation={animationType}
+                                        isloading={showSkeleton}>
+                                        <template if:false={showSkeleton}>
+                                            <p>This is the actual text content that appears when loading is complete.</p>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                            <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                        </template>
+                                    </c-lwc-skeleton>
+                                </div>
+                                <div class="code-example">
+                                    <lightning-button 
+                                        label="View Code" 
+                                        variant="base"
+                                        onclick={showTypeCode}>
+                                    </lightning-button>
+                                    <template if:true={showTypeCodeBlock}>
+                                        <pre class="code-block">{typeCodeExample}</pre>
+                                    </template>
+                                </div>
+                            </div>
+
+                            <!-- MIXED ATTRIBUTES EXAMPLE -->
+                            <div class="demo-section">
+                                <h4 class="slds-text-heading_medium">Mixed Attributes (variant + lines)</h4>
+                                <div class="slds-box slds-m-bottom_medium">
+                                    <c-lwc-skeleton 
+                                        variant="card"
+                                        lines="2"
+                                        animation={animationType}
+                                        isloading={showSkeleton}>
+                                        <template if:false={showSkeleton}>
+                                            <div class="slds-media">
+                                                <div class="slds-media__figure">
+                                                    <img src="https://via.placeholder.com/40" alt="User Avatar" class="avatar-image" />
+                                                </div>
+                                                <div class="slds-media__body">
+                                                    <p class="slds-text-heading_small slds-m-bottom_xx-small">User 1</p>
+                                                    <p class="slds-text-body_small">Software Developer</p>
+                                                </div>
+                                            </div>
+                                            <div class="slds-media slds-m-top_small">
+                                                <div class="slds-media__figure">
+                                                    <img src="https://via.placeholder.com/40" alt="User Avatar" class="avatar-image" />
+                                                </div>
+                                                <div class="slds-media__body">
+                                                    <p class="slds-text-heading_small slds-m-bottom_xx-small">User 2</p>
+                                                    <p class="slds-text-body_small">Product Manager</p>
+                                                </div>
+                                            </div>
+                                        </template>
+                                </c-lwc-skeleton>
+                                </div>
+                                <div class="code-example">
+                                    <lightning-button 
+                                        label="View Code" 
+                                        variant="base"
+                                        onclick={showMixedCode}>
+                                    </lightning-button>
+                                    <template if:true={showMixedCodeBlock}>
+                                        <pre class="code-block">{mixedCodeExample}</pre>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </lightning-tab>
+
+                    <!-- ADVANCED EXAMPLES TAB -->
+                    <lightning-tab label="Advanced Examples" onactive={handleTabActive}>
+                        <div class="slds-p-around_medium">
+                            <h3 class="slds-text-heading_small slds-m-bottom_small">Advanced Usage Examples</h3>
+                            
+                            <!-- CONDITIONAL LOADING -->
+                            <div class="demo-section">
+                                <h4 class="slds-text-heading_medium">Conditional Loading</h4>
+                                <div class="slds-box slds-m-bottom_medium">
+                                    <lightning-card title="Conditional Loading Example">
+                                        <div class="slds-p-around_medium">
+                                            <lightning-button 
+                                                label="Toggle Loading State" 
+                                                onclick={toggleLoading}
+                                                class="slds-m-bottom_small">
+                                            </lightning-button>
+                                            
+                                            <div class="slds-box">
+                                                <c-lwc-skeleton 
+                                                    type="card" 
+                                                    animation={animationType}
+                                                    isloading={conditionalLoading}>
+                                                    <template if:false={conditionalLoading}>
+                                                        <div class="slds-media">
+                                                            <div class="slds-media__figure">
+                                                                <img src="https://via.placeholder.com/40" alt="User Avatar" class="avatar-image" />
+                                                            </div>
+                                                            <div class="slds-media__body">
+                                                                <p class="slds-text-heading_small slds-m-bottom_xx-small">Conditional Content</p>
+                                                                <p class="slds-text-body_small">This content appears after loading completes.</p>
+                                                            </div>
+                                                        </div>
+                                                    </template>
+                                                </c-lwc-skeleton>
+                                            </div>
+                                        </div>
+                                    </lightning-card>
+                                </div>
+                                <div class="code-example">
+                                    <lightning-button 
+                                        label="View Code" 
+                                        variant="base"
+                                        onclick={showConditionalCode}>
+                                    </lightning-button>
+                                    <template if:true={showConditionalCodeBlock}>
+                                        <pre class="code-block">{conditionalCodeExample}</pre>
+                                    </template>
+                                </div>
+                            </div>
+
+                            <!-- NESTED SKELETONS -->
+                            <div class="demo-section">
+                                <h4 class="slds-text-heading_medium">Nested Skeletons</h4>
+                                <div class="slds-box slds-m-bottom_medium">
+                                    <lightning-card title="Nested Skeletons Example">
+                                        <div class="slds-p-around_medium">
+                                            <c-lwc-skeleton 
+                                                type="text" 
+                                                lines="1"
+                                                animation={animationType}
+                                                isloading={showSkeleton}>
+                                                <template if:false={showSkeleton}>
+                                                    <h3 class="slds-text-heading_medium">Nested Content</h3>
+                                                </template>
+                                            </c-lwc-skeleton>
+                                            
+                                            <div class="slds-m-top_small slds-p-left_medium">
+                                                <c-lwc-skeleton 
+                                                    type="card" 
+                                                    animation={animationType}
+                                                    isloading={showSkeleton}>
+                                                    <template if:false={showSkeleton}>
+                                                        <div class="slds-media">
+                                                            <div class="slds-media__figure">
+                                                                <img src="https://via.placeholder.com/40" alt="User Avatar" class="avatar-image" />
+                                                            </div>
+                                                            <div class="slds-media__body">
+                                                                <p class="slds-text-heading_small slds-m-bottom_xx-small">Nested Card</p>
+                                                                <p class="slds-text-body_small">This is a nested skeleton.</p>
+                                                            </div>
+                                                        </div>
+                                                    </template>
+                                                </c-lwc-skeleton>
+                                            </div>
+                                            
+                                            <div class="slds-m-top_small slds-p-left_medium">
+                                                <c-lwc-skeleton 
+                                                    type="table" 
+                                                    rows="2"
+                                                    columns="3"
+                                                    animation={animationType}
+                                                    isloading={showSkeleton}>
+                                                    <template if:false={showSkeleton}>
+                                                        <table class="slds-table slds-table_cell-buffer slds-no-row-hover">
+                                                            <thead>
+                                                                <tr class="slds-line-height_reset">
+                                                                    <th scope="col">
+                                                                        <div class="slds-truncate" title="Name">Name</div>
+                                                                    </th>
+                                                                    <th scope="col">
+                                                                        <div class="slds-truncate" title="Value">Value</div>
+                                                                    </th>
+                                                                    <th scope="col">
+                                                                        <div class="slds-truncate" title="Status">Status</div>
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr class="slds-hint-parent">
+                                                                    <td>
+                                                                        <div class="slds-truncate" title="Item 1">Item 1</div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="slds-truncate" title="100">100</div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="slds-truncate" title="Active">Active</div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="slds-hint-parent">
+                                                                    <td>
+                                                                        <div class="slds-truncate" title="Item 2">Item 2</div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="slds-truncate" title="200">200</div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="slds-truncate" title="Inactive">Inactive</div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </template>
+                                                </c-lwc-skeleton>
+                                            </div>
+                                        </div>
+                                    </lightning-card>
+                                </div>
+                                <div class="code-example">
+                                    <lightning-button 
+                                        label="View Code" 
+                                        variant="base"
+                                        onclick={showNestedCode}>
+                                    </lightning-button>
+                                    <template if:true={showNestedCodeBlock}>
+                                        <pre class="code-block">{nestedCodeExample}</pre>
+                                    </template>
+                                </div>
+                            </div>
+
+                            <!-- CUSTOM STYLING -->
+                            <div class="demo-section">
+                                <h4 class="slds-text-heading_medium">Custom Styling</h4>
+                                <div class="slds-box slds-m-bottom_medium">
+                                    <lightning-card title="Custom Styling Example">
+                                        <div class="slds-p-around_medium">
+                                            <div class="custom-skeleton-container">
+                                                <c-lwc-skeleton 
+                                                    type="rectangle" 
+                                                    width="100%"
+                                                    height="150px"
+                                                    radius="8px"
+                                                    animation={animationType}
+                                                    isloading={showSkeleton}>
+                                                    <template if:false={showSkeleton}>
+                                                        <div class="custom-content">
+                                                            <h3 class="slds-text-heading_medium">Custom Styled Content</h3>
+                                                            <p>This content has custom styling applied.</p>
+                                                        </div>
+                                                    </template>
+                                                </c-lwc-skeleton>
+                                            </div>
+                                        </div>
+                                    </lightning-card>
+                                </div>
+                                <div class="code-example">
+                                    <lightning-button 
+                                        label="View Code" 
+                                        variant="base"
+                                        onclick={showCustomCode}>
+                                    </lightning-button>
+                                    <template if:true={showCustomCodeBlock}>
+                                        <pre class="code-block">{customCodeExample}</pre>
+                                    </template>
+                                </div>
+                            </div>
+
+                            <!-- PERFORMANCE OPTIMIZATION -->
+                            <div class="demo-section">
+                                <h4 class="slds-text-heading_medium">Performance Optimization</h4>
+                                <div class="slds-box slds-m-bottom_medium">
+                                    <lightning-card title="Performance Optimization Example">
+                                        <div class="slds-p-around_medium">
+                                            <div class="performance-grid">
+                                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                                                    <c-lwc-skeleton 
+                                                        type="text" 
+                                                        lines="3"
+                                                        animation="none"
+                                                        isloading={showSkeleton}>
+                                                        <template if:false={showSkeleton}>
+                                                            <p>Fast loading - no animation</p>
+                                                            <p>Optimized for performance</p>
+                                                            <p>Best for mobile devices</p>
+                                                        </template>
+                                                    </c-lwc-skeleton>
+                                                </div>
+                                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                                                    <c-lwc-skeleton 
+                                                        type="text" 
+                                                        lines="3"
+                                                        animation="shimmer"
+                                                        isloading={showSkeleton}>
+                                                        <template if:false={showSkeleton}>
+                                                            <p>Standard loading - shimmer</p>
+                                                            <p>Good balance of performance</p>
+                                                            <p>Recommended for most cases</p>
+                                                        </template>
+                                                    </c-lwc-skeleton>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="slds-m-top_medium">
+                                                <c-lwc-skeleton 
+                                                    type="table" 
+                                                    rows="3"
+                                                    columns="2"
+                                                    animation="pulse"
+                                                    isloading={showSkeleton}>
+                                                    <template if:false={showSkeleton}>
+                                                        <table class="slds-table slds-table_cell-buffer slds-no-row-hover">
+                                                            <thead>
+                                                                <tr class="slds-line-height_reset">
+                                                                    <th scope="col">
+                                                                        <div class="slds-truncate" title="Metric">Metric</div>
+                                                                    </th>
+                                                                    <th scope="col">
+                                                                        <div class="slds-truncate" title="Value">Value</div>
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr class="slds-hint-parent">
+                                                                    <td>
+                                                                        <div class="slds-truncate" title="Q1">Q1</div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="slds-truncate" title="$100K">$100K</div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="slds-hint-parent">
+                                                                    <td>
+                                                                        <div class="slds-truncate" title="Q2">Q2</div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="slds-truncate" title="$150K">$150K</div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </template>
+                                                </c-lwc-skeleton>
+                                            </div>
+                                        </div>
+                                    </lightning-card>
+                                </div>
+                                <div class="code-example">
+                                    <lightning-button 
+                                        label="View Code" 
+                                        variant="base"
+                                        onclick={showPerformanceCode}>
+                                    </lightning-button>
+                                    <template if:true={showPerformanceCodeBlock}>
+                                        <pre class="code-block">{performanceCodeExample}</pre>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </lightning-tab>
+                </lightning-tabset>
+            </div>
+        </lightning-card>
+    </div>
+</template>

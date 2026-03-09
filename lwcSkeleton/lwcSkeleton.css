@@ -1,0 +1,325 @@
+:host {
+    --skeleton-bg: #f3f3f3;
+    --skeleton-highlight: #e0e0e0;
+    --skeleton-animation-speed: 1.4s;
+    --skeleton-wave-color: rgba(255,255,255,0.5);
+    --skeleton-slide-color: rgba(255,255,255,0.4);
+}
+
+.skeleton-wrapper {
+    width: 100%;
+}
+
+/* BASE STYLE */
+.skeleton-line,
+.skeleton-avatar,
+.skeleton-table-cell,
+.skeleton-rectangle,
+.skeleton-button {
+    background: linear-gradient(
+        90deg,
+        var(--skeleton-bg) 0%,
+        var(--skeleton-highlight) 20%,
+        var(--skeleton-highlight) 40%,
+        var(--skeleton-highlight) 60%,
+        var(--skeleton-highlight) 80%,
+        var(--skeleton-highlight) 100%,
+        var(--skeleton-bg) 100%
+    );
+    background-size: 200% 100%;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* REMOVED ALL SIZE VARIANTS - NOW USING DEFAULT SIZES */
+
+/* TEXT */
+.skeleton-line {
+    height: 14px;
+    margin-bottom: 10px;
+}
+
+.skeleton-line.small {
+    height: 10px;
+    width: 60%;
+}
+
+/* AVATAR */
+.skeleton-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* CARD */
+.skeleton-card {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid #dddbda;
+    border-radius: 6px;
+}
+
+.skeleton-card-body {
+    flex: 1;
+}
+
+/* TABLE */
+.skeleton-table-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.skeleton-table-cell {
+    flex: 1;
+    height: 14px;
+}
+
+/* BUTTON */
+.skeleton-button {
+    width: 120px;
+    height: 36px;
+    border-radius: 6px;
+}
+
+/* INPUT */
+.skeleton-input {
+    margin-bottom: 16px;
+}
+
+/* ANIMATIONS */
+
+/* 1. SHIMMER */
+.skeleton-line.skeleton-shimmer,
+.skeleton-avatar.skeleton-shimmer,
+.skeleton-table-cell.skeleton-shimmer,
+.skeleton-rectangle.skeleton-shimmer,
+.skeleton-button.skeleton-shimmer {
+    animation: shimmer var(--skeleton-animation-speed) ease-in-out infinite !important;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -100% 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+/* 2. PULSE */
+.skeleton-line.skeleton-pulse,
+.skeleton-avatar.skeleton-pulse,
+.skeleton-table-cell.skeleton-pulse,
+.skeleton-rectangle.skeleton-pulse,
+.skeleton-button.skeleton-pulse {
+    animation: pulse 1.4s ease-in-out infinite !important;
+    background: var(--skeleton-bg) !important;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+
+/* 3. WAVE */
+.skeleton-line.skeleton-wave,
+.skeleton-avatar.skeleton-wave,
+.skeleton-table-cell.skeleton-wave,
+.skeleton-rectangle.skeleton-wave,
+.skeleton-button.skeleton-wave {
+    background: var(--skeleton-bg) !important;
+    overflow: hidden !important;
+}
+
+.skeleton-line.skeleton-wave::after,
+.skeleton-avatar.skeleton-wave::after,
+.skeleton-table-cell.skeleton-wave::after,
+.skeleton-rectangle.skeleton-wave::after,
+.skeleton-button.skeleton-wave::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 150%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--skeleton-wave-color),
+        transparent
+    );
+    animation: wave 1.6s infinite;
+}
+
+@keyframes wave {
+    100% {
+        left: 150%;
+    }
+}
+
+/* 4. FADE */
+.skeleton-line.skeleton-fade,
+.skeleton-avatar.skeleton-fade,
+.skeleton-table-cell.skeleton-fade,
+.skeleton-rectangle.skeleton-fade,
+.skeleton-button.skeleton-fade {
+    animation: fade 1.5s infinite !important;
+    background: var(--skeleton-bg) !important;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+/* 5. GRADIENT SHIFT */
+.skeleton-line.skeleton-gradient-shift,
+.skeleton-avatar.skeleton-gradient-shift,
+.skeleton-table-cell.skeleton-gradient-shift,
+.skeleton-rectangle.skeleton-gradient-shift,
+.skeleton-button.skeleton-gradient-shift {
+    background: linear-gradient(
+        90deg,
+        var(--skeleton-bg) 0%,
+        var(--skeleton-highlight) 50%,
+        var(--skeleton-bg) 100%
+    ) !important;
+    background-size: 200% 200% !important;
+    animation: gradient-shift 2s infinite !important;
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* 6. GLOW */
+.skeleton-line.skeleton-glow,
+.skeleton-avatar.skeleton-glow,
+.skeleton-table-cell.skeleton-glow,
+.skeleton-rectangle.skeleton-glow,
+.skeleton-button.skeleton-glow {
+    background: var(--skeleton-bg) !important;
+    animation: glow 1.6s infinite alternate !important;
+}
+
+@keyframes glow {
+    from {
+        filter: brightness(95%);
+    }
+    to {
+        filter: brightness(110%);
+    }
+}
+
+/* 7. SLIDE */
+.skeleton-line.skeleton-slide,
+.skeleton-avatar.skeleton-slide,
+.skeleton-table-cell.skeleton-slide,
+.skeleton-rectangle.skeleton-slide,
+.skeleton-button.skeleton-slide {
+    background: var(--skeleton-bg) !important;
+    overflow: hidden !important;
+}
+
+.skeleton-line.skeleton-slide::before,
+.skeleton-avatar.skeleton-slide::before,
+.skeleton-table-cell.skeleton-slide::before,
+.skeleton-rectangle.skeleton-slide::before,
+.skeleton-button.skeleton-slide::before {
+    content: "";
+    position: absolute;
+    left: -100%;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--skeleton-slide-color),
+        transparent
+    );
+    animation: slide 1.5s infinite;
+}
+
+@keyframes slide {
+    100% {
+        left: 100%;
+    }
+}
+
+/* 8. BOUNCE */
+.skeleton-line.skeleton-bounce,
+.skeleton-avatar.skeleton-bounce,
+.skeleton-table-cell.skeleton-bounce,
+.skeleton-rectangle.skeleton-bounce,
+.skeleton-button.skeleton-bounce {
+    animation: bounce 1.2s infinite !important;
+    background: var(--skeleton-bg) !important;
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* 9. NONE (STATIC) */
+.skeleton-line.skeleton-none,
+.skeleton-avatar.skeleton-none,
+.skeleton-table-cell.skeleton-none,
+.skeleton-rectangle.skeleton-none,
+.skeleton-button.skeleton-none {
+    animation: none !important;
+    background: var(--skeleton-bg) !important;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .skeleton-line {
+        height: 12px;
+    }
+    
+    .skeleton-avatar {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* ACCESSIBILITY - Only disable animation if explicitly requested */
+@media (prefers-reduced-motion: reduce) {
+    .skeleton-line[class*="skeleton-"],
+    .skeleton-avatar[class*="skeleton-"],
+    .skeleton-table-cell[class*="skeleton-"],
+    .skeleton-rectangle[class*="skeleton-"],
+    .skeleton-button[class*="skeleton-"] {
+        animation: none !important;
+    }
+}

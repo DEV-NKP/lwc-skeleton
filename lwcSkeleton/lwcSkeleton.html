@@ -1,0 +1,73 @@
+<template>
+    <template if:true={_isLoading}>
+        <div 
+            class="skeleton-wrapper"
+            aria-busy={ariaBusy}
+            aria-live={ariaLive}
+            role={ariaRole}>
+
+            <!-- TEXT -->
+            <template if:true={isText}>
+                <template for:each={textLineItems} for:item="item">
+                    <div
+                        key={item.key}
+                        class={item.class}
+                        style={item.style}>
+                    </div>
+                </template>
+            </template>
+
+            <!-- AVATAR -->
+            <template if:true={isAvatar}>
+                <div class={avatarClass}></div>
+            </template>
+
+            <!-- CARD -->
+            <template if:true={isCard}>
+                <div class="skeleton-card">
+                    <div class={avatarClass}></div>
+                    <div class="skeleton-card-body">
+                        <div class={cardClass}></div>
+                        <div class="skeleton-line small {cardClass}"></div>
+                    </div>
+                </div>
+            </template>
+
+            <!-- TABLE -->
+            <template if:true={isTable}>
+                <div class="skeleton-table">
+                    <template for:each={rowsArray} for:item="row">
+                        <div key={row} class="skeleton-table-row">
+                            <template for:each={columnsArray} for:item="col">
+                                <div key={col} class={tableCellClass}></div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+            <!-- RECTANGLE -->
+            <template if:true={isRectangle}>
+                <div class={rectangleClass} style={rectangleStyle}></div>
+            </template>
+            
+            <!-- BUTTON -->
+            <template if:true={isButton}>
+                <div class={buttonClass}></div>
+            </template>
+
+            <!-- INPUT -->
+            <template if:true={isInput}>
+                <div class="skeleton-input">
+                    <div class="skeleton-line small {cardClass}"></div>
+                    <div class={rectangleClass} style="height:36px;"></div>
+                </div>
+            </template>
+
+        </div>
+    </template>
+
+    <template if:false={_isLoading}>
+        <slot></slot>
+    </template>
+</template>
