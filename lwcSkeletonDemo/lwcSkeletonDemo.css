@@ -1,3 +1,24 @@
+/*
+|--------------------------------------------------------------------------
+| LWC Skeleton Demo Component Styles
+|--------------------------------------------------------------------------
+|
+| Author: Niloy Kanti Paul
+| Portfolio: https://dev-nkp.github.io/
+| GitHub: https://github.com/DEV-NKP
+| Repository: https://github.com/DEV-NKP/lwc-skeleton
+|
+| Description:
+| CSS styles for the LWC Skeleton demo component.
+| Showcases all skeleton types with different animations.
+| Provides examples for developers.
+|
+| Technology: Salesforce Lightning Web Components (LWC)
+| License: MIT License
+|
+| Copyright (c) 2026 Niloy Kanti Paul
+|--------------------------------------------------------------------------
+*/
 /* Main container with blue background */
 .demo-container {
     min-height: 100vh;

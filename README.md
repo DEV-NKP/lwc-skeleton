@@ -15,7 +15,7 @@ Traditional spinners are generic and provide no context about what's loading. Sk
 
 ### Live Demo
 
-For a complete interactive demo showcasing all skeleton types and animations, visit our [demo page](https://lwc-skeleton-landing.vercel.app/).
+For a complete interactive demo showcasing all skeleton types and animations, visit our [demo page](https://lwc-skeleton.pages.dev/).
 
 ## ✨ Features
 

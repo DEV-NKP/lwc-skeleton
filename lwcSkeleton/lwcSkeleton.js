@@ -1,17 +1,21 @@
 import { LightningElement, api } from 'lwc';
 
 /**
- * @description A flexible skeleton loading component for Lightning Web Components
- * @author Your Name
- * @version 1.0.0
- * @see https://github.com/yourusername/lwc-skeleton
- * @example
- * <c-lwc-skeleton 
- *     type="card" 
- *     lines="3" 
- *     animation="shimmer"
- *     isloading={isLoading}>
- * </c-lwc-skeleton>
+ * LWC Skeleton Component JavaScript Controller
+ *
+ * Author: Niloy Kanti Paul
+ * Portfolio: https://dev-nkp.github.io/
+ * GitHub: https://github.com/DEV-NKP
+ * Repository: https://github.com/DEV-NKP/lwc-skeleton
+ *
+ * Description:
+ * JavaScript controller for the LWC Skeleton component.
+ * Handles skeleton visibility, animations, and configuration.
+ *
+ * Technology: Salesforce Lightning Web Components (LWC)
+ * License: MIT License
+ *
+ * Copyright (c) 2026 Niloy Kanti Paul
  */
 export default class LwcSkeleton extends LightningElement {
     /* PUBLIC API */

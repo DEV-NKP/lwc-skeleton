@@ -1,3 +1,23 @@
+/*
+|--------------------------------------------------------------------------
+| LWC Skeleton Component Styles
+|--------------------------------------------------------------------------
+|
+| Author: Niloy Kanti Paul
+| Portfolio: https://dev-nkp.github.io/
+| GitHub: https://github.com/DEV-NKP
+| Repository: https://github.com/DEV-NKP/lwc-skeleton
+|
+| Description:
+| CSS styles for the LWC Skeleton component with 9 animation types.
+| Uses authentic Salesforce Lightning colors (#e5f3fd, #cbe7fb).
+|
+| Technology: Salesforce Lightning Web Components (LWC)
+| License: MIT License
+|
+| Copyright (c) 2026 Niloy Kanti Paul
+|--------------------------------------------------------------------------
+*/
 :host {
     --skeleton-bg: #f3f3f3;
     --skeleton-highlight: #e0e0e0;

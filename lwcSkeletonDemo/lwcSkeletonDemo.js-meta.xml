@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+Author: Niloy Kanti Paul
+Portfolio: https://dev-nkp.github.io/
+GitHub: https://github.com/DEV-NKP
+Repository: https://github.com/DEV-NKP/lwc-skeleton
+
+Component: lwcSkeletonDemo
+
+Description:
+Demo component for LWC Skeleton showcasing all types and animations.
+Provides examples and implementation guidance for developers.
+
+Copyright (c) 2026 Niloy Kanti Paul
+-->
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>66.0</apiVersion>
      <isExposed>true</isExposed>

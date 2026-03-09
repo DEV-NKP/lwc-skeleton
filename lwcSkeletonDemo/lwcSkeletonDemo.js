@@ -1,5 +1,23 @@
-import { LightningElement, track } from 'lwc';
 
+import { LightningElement, track } from 'lwc';
+/**
+ * LWC Skeleton Demo Component JavaScript Controller
+ *
+ * Author: Niloy Kanti Paul
+ * Portfolio: https://dev-nkp.github.io/
+ * GitHub: https://github.com/DEV-NKP
+ * Repository: https://github.com/DEV-NKP/lwc-skeleton
+ *
+ * Description:
+ * JavaScript controller for the LWC Skeleton demo component.
+ * Demonstrates all skeleton types with different animations.
+ * Provides code examples and implementation guidance.
+ *
+ * Technology: Salesforce Lightning Web Components (LWC)
+ * License: MIT License
+ *
+ * Copyright (c) 2026 Niloy Kanti Paul
+ */
 export default class LwcSkeletonDemo extends LightningElement {
     // Global controls
     @track showSkeleton = true;

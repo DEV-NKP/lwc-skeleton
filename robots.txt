@@ -1,3 +1,7 @@
+# Robots.txt for LWC Skeleton Landing Page
+# Author: Niloy Kanti Paul
+# Repository: https://github.com/DEV-NKP/lwc-skeleton
+
 User-agent: *
 Allow: /
 
