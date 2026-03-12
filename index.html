@@ -91,11 +91,12 @@
 
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" href="/my-favicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/my-favicon/favicon.svg" />
+<link rel="shortcut icon" href="/my-favicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/my-favicon/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="LWC-Skeleton" />
+<link rel="manifest" href="/my-favicon/site.webmanifest" />
     
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -174,7 +175,15 @@
         "keywords": "LWC, Lightning Web Component, Salesforce, Skeleton Loader, SLDS, Lightning Design System, Niloy Kanti Paul, Salesforce Developer Bangladesh"
     }
     </script>
-    
+    <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebSite",
+ "name": "LWC Skeleton",
+ "alternateName": "Salesforce LWC Skeleton Loader",
+ "url": "https://lwc-skeleton.pages.dev/"
+}
+</script>
     <style>
         * {
             margin: 0;
@@ -2596,3 +2605,4 @@ sfdx force:source:deploy -p force-app</pre>
 </body>
 
 </html>
+
