@@ -1,25 +1,8 @@
 # Robots.txt for LWC Skeleton Landing Page
 # Author: Niloy Kanti Paul
 # Repository: https://github.com/DEV-NKP/lwc-skeleton
-
 User-agent: *
-Allow: /
-
-# Block AI scrapers
-User-agent: ChatGPT-User
-Disallow: /
-User-agent: GPTBot
-Disallow: /
-
-
-# Allow specific bots
-User-agent: Googlebot
-Allow: /
-User-agent: bingbot
 Allow: /
 
 # Sitemap location
 Sitemap: https://lwc-skeleton.pages.dev/sitemap.xml
-
-# Crawl delay
-Crawl-delay: 1
